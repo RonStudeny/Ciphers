@@ -5,9 +5,10 @@
     {
         public static void Main()
         {
-            //string c = "";
-            //Console.WriteLine(c = CaesarsCipher.Encipher("Hello world KYS", 15)); // j g nn q
-            //Console.WriteLine(CaesarsCipher.Decipher(c, 15));
+            string c = "";
+            Console.Write("Ciphered: ");
+            Console.WriteLine(c = CaesarsCipher.Encipher("Hello world KYS", 15)); // j g nn q
+            Console.WriteLine("Deciphered: " + CaesarsCipher.Decipher(c, 15));
 
             Console.ReadLine();
 
@@ -22,6 +23,7 @@
         public static string Encipher(string input, int key)
         {
             string res = "";
+            input = input.ToLower();
 
             foreach (char ch in input)
                 res += Cipher(ch, key);
@@ -32,6 +34,7 @@
         public static string Decipher(string input, int key)
         {
             string res = "";
+            input = input.ToLower();
 
             foreach (char ch in input)
                 res += Cipher(ch, key, true);
@@ -40,30 +43,19 @@
         }
 
 
-        //private static char Cipher(char ch, int key)
-        //{
-        //    if (!char.IsLetter(ch)) return ch;
-        //    char offset = char.IsUpper(ch) ? 'A' : 'a';
-
-        //    return (char)((((ch + key) - offset) % 26) + offset);
-        //}
-
-
         private static char Cipher(char ch, int key, bool decipher = false)
         {
+            if (!char.IsLetter(ch)) return ch;
+
             if (!decipher)
             {
-                if (!char.IsLetter(ch)) return ch;
-
-                if ((int)ch + key > 122) return (char)(97 + key);
-                else return (char)((int)ch + key);
+                if (ch + key > 122) return (char)((ch + key) - 26);
+                else return (char)(ch + key);
             }
             else
             {
-                if (!char.IsLetter(ch)) return ch;
-
-                if ((int)ch - key < 97) return (char)(122 - key);
-                else return (char)((int)ch - key);
+                if (ch - key < 97) return (char)((ch - key) + 26);
+                else return (char)(ch - key);
             }
 
         }    
