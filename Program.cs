@@ -8,13 +8,13 @@
             string c = "";
             Console.Write("Ciphered: ");
 
-            Console.WriteLine(c = CaesarsCipher.Encipher("idk why tf this doesnt workkkkk aaaaaaaaaa", 80)); 
+            Console.WriteLine(c = CaesarsCipher.Encipher("caesar test", 80)); 
             Console.WriteLine("Deciphered: " + CaesarsCipher.Decipher(c, 80));
 
             Console.ReadLine();
 
             string v = "";
-            Console.WriteLine(v = VignereCipher.Encipher("it workin?", "key"));
+            Console.WriteLine(v = VignereCipher.Encipher("vignere test", "key"));
             Console.WriteLine(VignereCipher.Decipher(v, "key"));
         }
     }
